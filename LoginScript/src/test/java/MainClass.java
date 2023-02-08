@@ -5,6 +5,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 public class MainClass {
@@ -14,7 +16,7 @@ public class MainClass {
             ChromeOptions options = new ChromeOptions();                                //Chrome
             options.addArguments("--start-maximized","--start-in-incognito");           //Chrome command options
             driver = new ChromeDriver(options);
-            driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
             //FirefoxOptions options = new FirefoxOptions();                            //Firefox
             //options.setBinary("C:\\Program Files\\Mozilla Firefox\\firefox.exe");     //версия Firefox стандарт
             //options.setBrowserVersion("111");                                         //версия Firefox Nightly
