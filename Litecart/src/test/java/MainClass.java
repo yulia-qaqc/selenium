@@ -11,7 +11,7 @@ public class MainClass {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--start-maximized","--start-in-incognito");
         driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));  //неявное ожидание
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
     @AfterAll
     public static void stop(){
