@@ -1,12 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="FirstTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-02-07T19:40:08" hostname="JULIA" time="25.494">
+<testsuite name="FirstTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-02-09T22:17:30" hostname="JULIA" time="6.014">
   <properties/>
-  <testcase name="FirstTest()" classname="FirstTest" time="25.494"/>
-  <system-out><![CDATA[]]></system-out>
+  <testcase name="Test()" classname="FirstTest" time="6.014"/>
+  <system-out><![CDATA[Заголовок найден
+Заголовок найден
+Заголовок найден
+Заголовок найден
+Заголовок найден
+Заголовок найден
+Заголовок найден
+Заголовок найден
+Заголовок найден
+Заголовок найден
+Заголовок найден
+Заголовок найден
+Заголовок найден
+Заголовок найден
+Заголовок найден
+Заголовок найден
+Заголовок найден
+]]></system-out>
   <system-err><![CDATA[SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
 SLF4J: Defaulting to no-operation (NOP) logger implementation
 SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
-Starting ChromeDriver 109.0.5414.74 (e7c5703604daa9cc128ccf5a5d3e993513758913-refs/branch-heads/5414@{#1172}) on port 7949
+Starting ChromeDriver 109.0.5414.74 (e7c5703604daa9cc128ccf5a5d3e993513758913-refs/branch-heads/5414@{#1172}) on port 18469
 Only local connections are allowed.
 Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
 ChromeDriver was started successfully.
