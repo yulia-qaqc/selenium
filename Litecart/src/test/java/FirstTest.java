@@ -7,20 +7,18 @@ public class FirstTest extends MainClass {
     @Test
     public void stickersTest() {
         driver.get("http://localhost/litecart/en/");
-        List<WebElement> items = driver.findElements(By.cssSelector("div.image-wrapper"));
+        List<WebElement> items = driver
+                .findElements(By.cssSelector("li[class='product column shadow hover-light'] div.image-wrapper"));
         int num = items.size();
         for (int i = 0; i < num; i++) {
-            (items.get(i)).click();
-            List<WebElement> stickers = driver
-                    .findElements(By.cssSelector("div[id='box-product']  div[class*='sticker']"));
-            int x = stickers.size();
-            if (x == 1) {
-                System.out.println("У товара один стикер");
+            List<WebElement> stickers = items.get(i)
+                    .findElements(By.cssSelector("li[class='product column shadow hover-light'] div.image-wrapper div[class*='sticker']"));
+            int stickersNum = stickers.size();
+            if (stickersNum == 1) {
+                System.out.println((i + 1) + " товар: найден один стикер");
+            } else {
+                System.out.println((i + 1) + " товар: ошибка");
             }
-            else {System.out.println("Ошибка");
-            }
-            driver.get("http://localhost/litecart/en/");
-            items = driver.findElements(By.cssSelector("div.image-wrapper"));
         }
     }
 }
