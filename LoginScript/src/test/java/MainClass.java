@@ -5,19 +5,16 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
-
 public class MainClass {
         static WebDriver driver;
         @BeforeAll
         public static void start(){
-            ChromeOptions options = new ChromeOptions();                                //Chrome
+            ChromeOptions options = new ChromeOptions();
             options.addArguments("--start-maximized","--start-in-incognito");           //Chrome command options
             driver = new ChromeDriver(options);
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-            //FirefoxOptions options = new FirefoxOptions();                            //Firefox
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+            //FirefoxOptions options = new FirefoxOptions();
             //options.setBinary("C:\\Program Files\\Mozilla Firefox\\firefox.exe");     //версия Firefox стандарт
             //options.setBrowserVersion("111");                                         //версия Firefox Nightly
             //options.addArguments("-private");                                         //Firefox command option
