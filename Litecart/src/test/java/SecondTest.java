@@ -24,6 +24,15 @@ public class SecondTest extends MainClass {
             String country = countries.get(i).getAttribute("text");
             countriesList.add(country);
         }
+        List<String> countriesListSorted = new ArrayList<>(countriesList);
+        countriesListSorted.sort(Comparator.naturalOrder());
+        boolean isEqual = Objects.equals(countriesList,countriesListSorted);
+        if (isEqual) {
+            System.out.println("Страны отсортированы в алфавитном порядке");
+        }
+        else {
+            System.out.println("Ошибка сортировки");
+        }
         System.out.println(countriesList);
     }
     @Test
@@ -45,8 +54,18 @@ public class SecondTest extends MainClass {
                     String name = names.get(j).getAttribute("textContent");
                     namesList.add(name);
                 }
-                driver.get("http://localhost/litecart/admin/?app=countries&doc=countries");
+                namesList.remove(num2-1);
+                List<String> namesListSorted = new ArrayList<>(namesList);
+                namesListSorted.sort(Comparator.naturalOrder());
+                boolean isEqual = Objects.equals(namesList,namesListSorted);
+                if (isEqual) {
+                    System.out.println("Геозоны отсортированы в алфавитном порядке");
+                }
+                else {
+                    System.out.println("Ошибка сортировки");
+                }
                 System.out.println(namesList);
+                driver.get("http://localhost/litecart/admin/?app=countries&doc=countries");
             }
         }
         }
