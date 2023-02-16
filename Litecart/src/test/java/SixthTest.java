@@ -51,8 +51,7 @@ public class SixthTest extends MainClass{
         s4.selectByIndex(2);
         // Upload Image
         // преобразовать относительный путь в абсолютный
-        Path image = Path.of("C:\\Users\\Юлия\\Desktop\\selenium\\Litecart\\src\\main\\resources\\Mandarinka.jpg")
-                .toAbsolutePath();
+        Path image = Path.of("src\\main\\resources\\Mandarinka.jpg").toAbsolutePath();
         String pathString =  image.toString();
         driver.findElement(By.cssSelector("[type='file']")).sendKeys(pathString);
         // Date
