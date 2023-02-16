@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.Color;
 import java.util.List;
 public class FourthTest extends MainClass {
     @Test
@@ -80,32 +81,27 @@ public class FourthTest extends MainClass {
         driver.get("http://localhost/litecart/en/");
         List<WebElement> items = driver
                 .findElements(By.cssSelector("li.product div.price-wrapper"));
-        int num = items.size(); // кол-во уточек
+        int num = items.size(); // кол-во единиц товара
         for (int i = 0; i < num; i++) {
-            WebElement item = items.get(i); // конкретная уточка
+            WebElement item = items.get(i); // конкретный товар
             List<WebElement> prices = item.findElements(By.cssSelector("[class*='price']"));
-            int num2 = prices.size();// количество цен для конкретной уточки
+            int num2 = prices.size();// количество цен для конкретного товара
             if (num2 == 2) {
-                String priceRegularColor = prices.get(0).getCssValue("color");
                 String priceRegularCrossedOut = prices.get(0).getCssValue("text-decoration-line");
-                    // вывести значения R, G, B
-                String[] priceRegularColorArray = priceRegularColor.replace("rgba( )","").split(", ");
-                String Rstring = priceRegularColorArray[0].replaceAll(" ","");
-                String Gstring = priceRegularColorArray[1].replaceAll(" ","");
-                String Bstring = priceRegularColorArray[2].replaceAll(" ","");
-//для firefox
-String Bstring2 = Bstring.replace(")","");
-                int R = Integer.parseInt(Gstring);
-                int G = Integer.parseInt(Gstring);
-                int B = Integer.parseInt(Bstring2);
+                Color priceRegularColorRgba = Color.fromString(prices.get(0).getCssValue("color"));
+                //Color: rgba(119, 119, 119, 1)
+                // вывести значения R, G, B
+                int R = priceRegularColorRgba.getColor().getRed();
+                int G = priceRegularColorRgba.getColor().getGreen();
+                int B = priceRegularColorRgba.getColor().getBlue();
                     if((R == G) & (G == B) & priceRegularCrossedOut.equals("line-through")){
                     System.out.println("Товар " + (i + 1) + ". Обычная цена серая и зачеркнутая");
                     } else {
                     System.out.println("Товар " + (i + 1) + ". Ошибка");
                     }
-                }
             }
-            }
+        }
+    }
     @Test
     // Тест проверяет, что акционная цена товара жирная и красная. Для первого товара из блока Campaigns
     public void redColorPrice() {
@@ -113,17 +109,13 @@ String Bstring2 = Bstring.replace(")","");
         driver.get("http://localhost/litecart/en/");
         WebElement campaignPrice = driver
                 .findElement(By.cssSelector("div[id='box-campaigns'] strong"));
-        String redPrice = campaignPrice.getCssValue("color");
         String boldPrice = campaignPrice.getCssValue("font-weight");
-            String[] redPriceArray = redPrice.replace("rgba( )","").split(", ");
+        Color redPriceRgba = Color.fromString(campaignPrice.getCssValue("color"));
+        //Color: rgba(204, 0, 0, 1)
         // вывести значения G, B
-            String Gstring = redPriceArray[1].replaceAll(" ","");
-            String Bstring = redPriceArray[2].replaceAll(" ","");
-            // для firefox
-        String Bstring1 = Bstring.replace(")","");
-            int G = Integer.parseInt(Gstring);
-            int B = Integer.parseInt(Bstring1);
-                if((G == 0) & (B == 0) & boldPrice.equals("700")){
+        int G = redPriceRgba.getColor().getGreen();
+        int B = redPriceRgba.getColor().getBlue();
+                if((G == 0) & (B == 0) & (boldPrice.equals("700") | boldPrice.equals("900"))){
                 System.out.println("Главная страница: Акционная цена товара жирная и красная");
                 } else {
                 System.out.println("Главная страница: Ошибка");
@@ -131,16 +123,11 @@ String Bstring2 = Bstring.replace(")","");
         campaignPrice.click(); // переход на страницу товара
         WebElement campaignPriceItemPage = driver
                 .findElement(By.cssSelector("strong.campaign-price"));
-        String redPriceItemPage = campaignPriceItemPage.getCssValue("color");
         String boldPriceItemPage = campaignPriceItemPage.getCssValue("font-weight");
-            String[] redPriceItemPageArray = redPriceItemPage.replace("rgba( )","").split(", ");
+        Color redPriceItemPage = Color.fromString(campaignPriceItemPage.getCssValue("color"));
         // вывести значения G, B
-        String Gstring2 = redPriceItemPageArray[1].replaceAll(" ","");
-        String Bstring2 = redPriceItemPageArray[2].replaceAll(" ","");
-        // для firefox
-        String Bstring3 = Bstring2.replace(")","");
-        int G2 = Integer.parseInt(Gstring2);
-        int B2 = Integer.parseInt(Bstring3);
+        int G2 = redPriceItemPage.getColor().getGreen();
+        int B2 = redPriceItemPage.getColor().getBlue();
             if((G2 == 0) & (B2 == 0) & boldPriceItemPage.equals("700")){
             System.out.println("Страница товара: Акционная цена товара жирная и красная");
             } else {
