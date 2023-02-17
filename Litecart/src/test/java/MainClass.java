@@ -20,7 +20,7 @@ public class MainClass {
         options.setBinary("C:\\Program Files\\Mozilla Firefox\\firefox.exe");
         driver = new FirefoxDriver(options);
         //driver = new EdgeDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
     }
     @AfterAll
     public static void stop(){
