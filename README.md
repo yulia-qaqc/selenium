@@ -37,3 +37,11 @@
 5) Тест проверяет, что шрифт акционной цены крупнее, чем обычной. Для первого товара из блока Campaigns
 
 Тесты работают в разных браузерах (Google Chrome, Microsoft Edge, Firefox).
+
+### [6. Сценарий для регистрации нового пользователя в приложении litecart](https://github.com/yulia-qaqc/selenium/blob/main/Litecart/src/test/java/FifthTest.java)
+
+[Инициализация драйвера](https://github.com/yulia-qaqc/selenium/blob/main/Litecart/src/test/java/MainClass.java)
+
+Регистрация новой учётной записи с уникальным адресом электронной почты, выход, повторный вход в только что созданную учётную запись, и ещё раз выход.
+
+
