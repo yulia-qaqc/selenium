@@ -44,4 +44,7 @@
 
 Регистрация новой учётной записи с уникальным адресом электронной почты, выход, повторный вход в только что созданную учётную запись, и ещё раз выход.
 
+### [7. Сценарий для добавления нового товара в приложении litecart (в админке)](https://github.com/yulia-qaqc/selenium/blob/main/Litecart/src/test/java/SixthTest.java)
+
+[Инициализация драйвера](https://github.com/yulia-qaqc/selenium/blob/main/Litecart/src/test/java/MainClass.java)
 
