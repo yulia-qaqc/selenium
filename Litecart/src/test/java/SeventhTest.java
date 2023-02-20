@@ -43,7 +43,7 @@ public class SeventhTest extends MainClass {
         driver.findElement(By.cssSelector("div#cart a.link")).click();
         //удалить все товары из корзины один за другим, после каждого удаления подождать, пока внизу обновится таблица
         WebElement itemCart = driver.findElement(By.cssSelector("button[value=Remove]"));
-            for(int g = 0; g < 3; g++) {
+            for (int g = 0; g < 3; g++) {
                 try {
                     driver.findElement(By.cssSelector("li.shortcut")).click();
                     itemCart.click();

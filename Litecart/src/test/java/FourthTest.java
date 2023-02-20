@@ -110,12 +110,13 @@ public class FourthTest extends MainClass {
         WebElement campaignPrice = driver
                 .findElement(By.cssSelector("div[id='box-campaigns'] strong"));
         String boldPrice = campaignPrice.getCssValue("font-weight");
+        int boldP = Integer.parseInt(boldPrice);
         Color redPriceRgba = Color.fromString(campaignPrice.getCssValue("color"));
         //Color: rgba(204, 0, 0, 1)
         // вывести значения G, B
         int G = redPriceRgba.getColor().getGreen();
         int B = redPriceRgba.getColor().getBlue();
-                if((G == 0) & (B == 0) & (boldPrice.equals("700") | boldPrice.equals("900"))){
+                if((G == 0) & (B == 0) & boldP >= 700) {
                 System.out.println("Главная страница: Акционная цена товара жирная и красная");
                 } else {
                 System.out.println("Главная страница: Ошибка");
@@ -124,11 +125,12 @@ public class FourthTest extends MainClass {
         WebElement campaignPriceItemPage = driver
                 .findElement(By.cssSelector("strong.campaign-price"));
         String boldPriceItemPage = campaignPriceItemPage.getCssValue("font-weight");
+        int boldIP = Integer.parseInt(boldPriceItemPage);
         Color redPriceItemPage = Color.fromString(campaignPriceItemPage.getCssValue("color"));
         // вывести значения G, B
         int G2 = redPriceItemPage.getColor().getGreen();
         int B2 = redPriceItemPage.getColor().getBlue();
-            if((G2 == 0) & (B2 == 0) & boldPriceItemPage.equals("700")){
+            if((G2 == 0) & (B2 == 0) & boldIP >= 700) {
             System.out.println("Страница товара: Акционная цена товара жирная и красная");
             } else {
             System.out.println("Страница товара: Ошибка");
