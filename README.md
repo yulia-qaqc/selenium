@@ -26,3 +26,25 @@
 
 Сценарий заходит в каждую из стран и проверяет, что зоны расположены в алфавитном порядке.
 
+### [5. Проверки различных параметров товара в приложении litecart](https://github.com/yulia-qaqc/selenium/blob/main/Litecart/src/test/java/FourthTest.java)
+
+[Инициализация драйвера](https://github.com/yulia-qaqc/selenium/blob/main/Litecart/src/test/java/MainClass.java)
+
+1) Проверка совпадения текста на главной странице и странице товара
+2) Проверка совпадения цен на главной странице и странице товара (обычной и акционной)
+3) Тест проверяет, что обычная цена товара зачёркнутая и серая
+4) Тест проверяет, что акционная цена товара жирная и красная. Для первого товара из блока Campaigns
+5) Тест проверяет, что шрифт акционной цены крупнее, чем обычной. Для первого товара из блока Campaigns
+
+Тесты работают в разных браузерах (Google Chrome, Microsoft Edge, Firefox).
+
+### [6. Сценарий для регистрации нового пользователя в приложении litecart](https://github.com/yulia-qaqc/selenium/blob/main/Litecart/src/test/java/FifthTest.java)
+
+[Инициализация драйвера](https://github.com/yulia-qaqc/selenium/blob/main/Litecart/src/test/java/MainClass.java)
+
+Регистрация новой учётной записи с уникальным адресом электронной почты, выход, повторный вход в только что созданную учётную запись, и ещё раз выход.
+
+### [7. Сценарий для добавления нового товара в приложении litecart (в админке)](https://github.com/yulia-qaqc/selenium/blob/main/Litecart/src/test/java/SixthTest.java)
+
+[Инициализация драйвера](https://github.com/yulia-qaqc/selenium/blob/main/Litecart/src/test/java/MainClass.java)
+
