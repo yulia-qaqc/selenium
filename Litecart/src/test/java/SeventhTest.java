@@ -20,12 +20,12 @@ public class SeventhTest extends MainClass {
             WebElement item = items.get(j);
             item.click();
             // получить значение счетчика товаров
-            String i = driver.findElement(By.cssSelector("div#cart span.quantity")).getAttribute("textContent");
+            String quantity = driver.findElement(By.cssSelector("div#cart span.quantity")).getAttribute("textContent");
             // если на странице присутствует select size
             try {
                 WebElement select = driver.findElement(By.cssSelector("select[name='options[Size]']"));
                 Select s = new Select(select);
-                WebElement S = new WebDriverWait(driver, Duration.ofSeconds(5))
+                WebElement selectWE = new WebDriverWait(driver, Duration.ofSeconds(5))
                         .until(ExpectedConditions.elementToBeClickable(By.cssSelector("select[name*=Size] [value*=M]")));
                 s.selectByIndex(2);
             } catch (NoSuchElementException ex) {
@@ -34,26 +34,43 @@ public class SeventhTest extends MainClass {
             // добавить товар в корзину
             driver.findElement(By.cssSelector("button[name*='add_cart'][value]")).click();
             // подождать, пока счётчик товаров в корзине обновится
-            boolean itemsCountNew = new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions
-                    .not(attributeContains(By.cssSelector("div#cart span.quantity"), "textContent", i)));
+            boolean itemsQuantityNew = new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions
+                    .not(attributeContains(By.cssSelector("div#cart span.quantity"), "textContent", quantity)));
             driver.get("http://localhost/litecart/en/");
             items = driver.findElements(By.cssSelector("li[class*='product column']"));
         }
         // открыть корзину
         driver.findElement(By.cssSelector("div#cart a.link")).click();
-        //удалить все товары из корзины один за другим, после каждого удаления подождать, пока внизу обновится таблица
-        WebElement itemCart = driver.findElement(By.cssSelector("button[value=Remove]"));
-            for (int g = 0; g < 3; g++) {
-                try {
-                    driver.findElement(By.cssSelector("li.shortcut")).click();
-                    itemCart.click();
-                    WebElement table = driver.findElement(By.cssSelector("table[class*='dataTable']"));
-                    boolean tableNew = new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions
-                            .stalenessOf(table));
-                    itemCart = driver.findElement(By.cssSelector("button[value=Remove]"));
-                } catch (NoSuchElementException ex) {
-                    System.out.println("Отсутствует shortcut на данной странице");
-                }
+        // удалить все товары из корзины один за другим, после каждого удаления подождать, пока внизу обновится таблица
+        List<WebElement> shortcuts =  driver.findElements(By.cssSelector("ul.shortcuts a"));
+        // определить количество уникальных товаров
+        int shortcutsCount = shortcuts.size();
+        if (shortcutsCount == 3) {
+            for (int i = 0; i <= 2; i++) {
+                WebElement table = driver.findElement(By.cssSelector("table[class*='dataTable'] tbody"));
+                driver.findElement(By.cssSelector("li.item button[name=remove_cart_item]")).click();
+                boolean tableNew = new WebDriverWait(driver, Duration.ofSeconds(5))
+                        .until(ExpectedConditions.stalenessOf(table));
             }
+        }
+        else if (shortcutsCount == 2) {
+            for (int i = 0; i <= 1; i++) {
+                WebElement table = driver.findElement(By.cssSelector("table[class*='dataTable'] tbody"));
+                driver.findElement(By.cssSelector("li.item button[name=remove_cart_item]")).click();
+                boolean tableNew = new WebDriverWait(driver, Duration.ofSeconds(5))
+                        .until(ExpectedConditions.stalenessOf(table));
+            }
+        }
+        else if (shortcutsCount == 1) {
+            WebElement table = driver.findElement(By.cssSelector("table[class*='dataTable'] tbody"));
+            driver.findElement(By.cssSelector("li.item button[name=remove_cart_item]")).click();
+            boolean tableNew = new WebDriverWait(driver, Duration.ofSeconds(5))
+                    .until(ExpectedConditions.stalenessOf(table));
+        }
+        // проверить, что все товары в корзине удалены
+        String noItems = driver.findElement(By.cssSelector("td.content p")).getAttribute("textContent");
+        if (noItems.equals("There are no items in your cart.")) {
+            System.out.println("Все товары в корзине удалены");
+        }
     }
 }
