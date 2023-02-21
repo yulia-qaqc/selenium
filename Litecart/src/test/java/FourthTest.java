@@ -34,11 +34,11 @@ public class FourthTest extends MainClass {
         driver.get("http://localhost/litecart/en/");
         List<WebElement> items = driver
                 .findElements(By.cssSelector("li.product div.price-wrapper"));
-        int num = items.size(); // кол-во уточек
+        int num = items.size(); // кол-во товаров
         for (int i = 0; i < num; i++) {
-            WebElement item = items.get(i); // конкретная уточка
+            WebElement item = items.get(i); // конкретный товар
             List<WebElement> prices = item.findElements(By.cssSelector("[class*='price']"));
-            int num2 = prices.size();// количество цен для конкретной уточки
+            int num2 = prices.size();// количество цен для конкретного товара
             if (num2 == 1) {
                 String priceRegular = prices.get(0).getAttribute("textContent");
                 items.get(i).click();
@@ -81,7 +81,7 @@ public class FourthTest extends MainClass {
         driver.get("http://localhost/litecart/en/");
         List<WebElement> items = driver
                 .findElements(By.cssSelector("li.product div.price-wrapper"));
-        int num = items.size(); // кол-во единиц товара
+        int num = items.size(); // кол-во товаров
         for (int i = 0; i < num; i++) {
             WebElement item = items.get(i); // конкретный товар
             List<WebElement> prices = item.findElements(By.cssSelector("[class*='price']"));
