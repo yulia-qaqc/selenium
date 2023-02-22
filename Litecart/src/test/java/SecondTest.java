@@ -3,7 +3,6 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import java.util.*;
-import static java.util.Collections.sort;
 public class SecondTest extends MainClass {
     // Сценарий проверяет сортировку стран и геозон на странице стран
     @BeforeAll
@@ -54,7 +53,7 @@ public class SecondTest extends MainClass {
                     String name = names.get(j).getAttribute("textContent");
                     namesList.add(name);
                 }
-                namesList.remove(num2-1);
+                namesList.remove(num2 - 1);
                 List<String> namesListSorted = new ArrayList<>(namesList);
                 namesListSorted.sort(Comparator.naturalOrder());
                 boolean isEqual = Objects.equals(namesList,namesListSorted);
@@ -68,5 +67,5 @@ public class SecondTest extends MainClass {
                 driver.get("http://localhost/litecart/admin/?app=countries&doc=countries");
             }
         }
-        }
+    }
 }
