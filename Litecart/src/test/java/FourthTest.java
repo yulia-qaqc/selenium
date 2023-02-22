@@ -18,9 +18,9 @@ public class FourthTest extends MainClass {
             String itemPageTitle = driver.findElement(By.cssSelector("h1.title"))
                     .getAttribute("textContent");
             if (title.equals(itemPageTitle)) {
-                System.out.println("Товар " + (i+1) + ". Текст совпадает");
+                System.out.println("Товар " + (i + 1) + ". Текст совпадает");
             } else {
-                System.out.println("Товар " + (i+1) + ". Ошибка");
+                System.out.println("Товар " + (i + 1) + ". Ошибка");
             }
             driver.get("http://localhost/litecart/en/");
             items = driver
