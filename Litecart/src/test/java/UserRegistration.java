@@ -14,6 +14,7 @@ public class UserRegistration extends DriverClass {
         driver.get("http://localhost/litecart/en/");
         Random random = new Random();
         String email = random.nextInt(0,100000) + "@test.com";
+        String password = "q1w1a1s7";
         //регистрация нового пользователя
         driver.findElement(By.cssSelector("div#box-account-login td a"))
                 .click();
@@ -48,9 +49,9 @@ public class UserRegistration extends DriverClass {
         driver.findElement(By.cssSelector("input[name=phone]"))
                 .sendKeys("+13150000000");
         driver.findElement(By.cssSelector("input[name=password]"))
-                .sendKeys("q1w1a1s1");
+                .sendKeys(password);
         driver.findElement(By.cssSelector("input[name=confirmed_password]"))
-                .sendKeys("q1w1a1s1");
+                .sendKeys(password);
         driver.findElement(By.cssSelector("button[type=submit]"))
                 .click();
         driver.findElement(By.cssSelector("aside#navigation [href*=logout]"))
@@ -59,7 +60,7 @@ public class UserRegistration extends DriverClass {
         driver.findElement(By.cssSelector("input[name=email]"))
                 .sendKeys(email);
         driver.findElement(By.cssSelector("input[name=password]"))
-                .sendKeys("q1w1a1s1");
+                .sendKeys(password);
         driver.findElement(By.cssSelector("button[name=login]"))
                 .click();
         //повторный выход
