@@ -1,6 +1,6 @@
 ## Автоматизация тестирования Selenium WebDriver
 
-### [1. Сценарий, проходящий по всем разделам админки в приложении litecart](https://github.com/yulia-qaqc/selenium/tree/main/LoginScript/src/test/java)
+### [1. Сценарий, проходящий по всем разделам админки в приложении litecart](https://github.com/yulia-qaqc/selenium/blob/main/LitecartGradle/src/test/java/AdminMenu.java)
 
 Сценарий выполняет следующие действия:
 1) входит в панель администратора
