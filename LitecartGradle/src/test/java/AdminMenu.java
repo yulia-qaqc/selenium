@@ -26,6 +26,7 @@ public class AdminMenu {
         }
     @Test
     public void adminMenuTest() {
+        // авторизация в панели администратора
         driver.get("http://localhost/litecart/admin");
         driver.findElement(By.name("username")).sendKeys("admin");
         driver.findElement(By.name("password")).sendKeys("admin");
@@ -35,8 +36,10 @@ public class AdminMenu {
         int num = listVertical.size();
         for (int i = 0; i < num; i++){
             List<WebElement> listVerticalNew = driver
+            // прокликивать последовательно все пункты меню, включая вложенные пункты
                     .findElements(By.cssSelector("ul.list-vertical a span:nth-child(2)"));
             (listVerticalNew.get(i)).click();
+            // для каждой страницы проверить наличие заголовка
             if(driver.findElement(By.cssSelector("h1[style='margin-top: 0px;']")) != null){
                 System.out.println("Заголовок найден. Пункт основного меню "+ (i + 1));
             }
