@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.List;
 import java.util.Set;
-public class EightTest extends MainClass {
+public class OpenNewWindows extends DriverClass {
     WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(5));
     public ExpectedCondition<String> anyWindowOtherThan(Set<String> oldWindows) {
         return new ExpectedCondition<String>() {

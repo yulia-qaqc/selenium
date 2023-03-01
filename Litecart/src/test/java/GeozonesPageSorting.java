@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
-public class ThirdTest extends MainClass {
+public class GeozonesPageSorting extends DriverClass {
     @BeforeAll
     public static void beforeTest() {
         driver.get("http://localhost/litecart/admin");

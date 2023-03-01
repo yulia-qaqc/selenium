@@ -11,7 +11,7 @@ import java.util.List;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.*;
 
-public class SeventhTest extends MainClass {
+public class CartActions extends DriverClass {
     @Test
     public void cartTest() {
         driver.get("http://localhost/litecart/en/");

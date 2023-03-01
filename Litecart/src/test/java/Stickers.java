@@ -2,7 +2,7 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import java.util.List;
-public class FirstTest extends MainClass {
+public class Stickers extends DriverClass {
     // Сценарий проверяет, что у каждого товара имеется ровно один стикер
     @Test
     public void stickersTest() {

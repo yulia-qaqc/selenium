@@ -13,7 +13,7 @@ import java.time.Duration;
 import java.util.List;
 import java.util.logging.Level;
 
-public class NineTest {
+public class BrowserLogs {
     static WebDriver driver;
 
     @BeforeAll

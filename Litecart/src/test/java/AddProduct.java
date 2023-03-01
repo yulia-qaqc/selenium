@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.nio.file.Path;
 import java.time.Duration;
 
-public class SixthTest extends MainClass{
+public class AddProduct extends DriverClass {
     @Test
     // Сценарий добавления нового товара в приложении litecart (в админке)
     public void addProductTest() {
@@ -92,7 +92,8 @@ public class SixthTest extends MainClass{
         driver.findElement(By.cssSelector("button[name=save]")).click();
         // Проверить, что товар появился в каталоге (в админке)
         driver.findElement(By.cssSelector("ul#box-apps-menu [href*=catalog] span.name")).click();
-        String name = driver.findElement(By.cssSelector("a[href*='edit_product&category']:not([title='Edit'])")).getAttribute("textContent");
+        String name = driver.findElement(By.cssSelector("a[href*='edit_product&category']:not([title='Edit'])"))
+                .getAttribute("textContent");
         if(name.equals("Mandarinka duck")){
             System.out.println("Товар добавлен в каталог");
             }

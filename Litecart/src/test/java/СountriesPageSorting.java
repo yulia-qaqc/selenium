@@ -3,7 +3,7 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import java.util.*;
-public class SecondTest extends MainClass {
+public class СountriesPageSorting extends DriverClass {
     // Сценарий проверяет сортировку стран и геозон на странице стран
     @BeforeAll
     public static void beforeTest() {

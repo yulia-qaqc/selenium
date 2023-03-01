@@ -3,7 +3,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.Color;
 import java.util.List;
-public class FourthTest extends MainClass {
+public class ProductParameters extends DriverClass {
     @Test
     // Проверка совпадения текста на главной странице и странице товара
     public void itemTitle() {

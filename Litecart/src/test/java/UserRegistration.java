@@ -7,10 +7,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.Random;
-public class FifthTest extends MainClass {
+public class UserRegistration extends DriverClass {
     @Test
     // Сценарий регистрации нового пользователя в приложении litecart (для клиентов)
-    public void loginTest() {
+    public void registrationTest() {
         driver.get("http://localhost/litecart/en/");
         Random random = new Random();
         String email = random.nextInt(0,100000) + "@test.com";
