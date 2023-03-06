@@ -62,6 +62,10 @@
 5) открывает корзину
 6) удаляет все товары из корзины один за другим, после каждого удаления ждет, пока внизу обновится таблица
 
+[Шаблон проектирования Page Objects](https://github.com/yulia-qaqc/selenium/tree/main/LitecartPageObjects/src/test/java)
+
+Это вышеуказанный сценарий с применением многослойной архитектуры.
+
 ### [9. Сценарий проверяет, что ссылки на странице редактирования страны открываются в новом окне](https://github.com/yulia-qaqc/selenium/blob/main/Litecart/src/test/java/OpenNewWindows.java)
 
 [Инициализация драйвера](https://github.com/yulia-qaqc/selenium/blob/main/Litecart/src/test/java/DriverClass.java)
