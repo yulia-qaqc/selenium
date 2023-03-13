@@ -1,7 +1,7 @@
 ## Автоматизация тестирования Selenium WebDriver
 ## Сценарии для приложения http://localhost/litecart
 
-### [1. Сценарий, проходящий по всем разделам админки в приложении litecart](https://github.com/yulia-qaqc/selenium/blob/main/LitecartGradle/src/test/java/AdminMenu.java)
+### [1. Сценарий, проходящий по всем разделам админки в приложении litecart](https://github.com/yulia-qaqc/selenium/blob/main/Litecart/src/test/java/AdminMenu.java)
 
 Сценарий выполняет следующие действия:
 1) входит в панель администратора,
