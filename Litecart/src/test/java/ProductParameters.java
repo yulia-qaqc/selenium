@@ -3,11 +3,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.Color;
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 public class ProductParameters extends DriverClass {
     @Test
     // Проверка совпадения текста на главной странице и странице товара
     public void itemTitle() {
-        System.out.println("Проверка совпадения текста на главной странице и странице товара");
         driver.get("http://localhost/litecart/en/");
         List<WebElement> items = driver
                 .findElements(By.cssSelector("li.product a.link"));
@@ -17,11 +20,8 @@ public class ProductParameters extends DriverClass {
             items.get(i).click();
             String itemPageTitle = driver.findElement(By.cssSelector("h1.title"))
                     .getAttribute("textContent");
-            if (title.equals(itemPageTitle)) {
-                System.out.println("Товар " + (i + 1) + ". Текст совпадает");
-            } else {
-                System.out.println("Товар " + (i + 1) + ". Ошибка");
-            }
+            assertEquals(title,itemPageTitle);
+
             driver.get("http://localhost/litecart/en/");
             items = driver
                     .findElements(By.cssSelector("li.product a.link"));
@@ -30,7 +30,6 @@ public class ProductParameters extends DriverClass {
     @Test
     // Проверка совпадения цен на главной странице и странице товара (обычной и акционной)
     public void itemPrice() {
-        System.out.println("Проверка совпадения цен на главной странице и странице товара (обычной и акционной)");
         driver.get("http://localhost/litecart/en/");
         List<WebElement> items = driver
                 .findElements(By.cssSelector("li.product div.price-wrapper"));
@@ -45,11 +44,8 @@ public class ProductParameters extends DriverClass {
                 String priceRegularItemPage = driver
                         .findElements(By.cssSelector("div[id='box-product'] div.price-wrapper [class*='price']"))
                         .get(0).getAttribute("textContent");
-                if (priceRegular.equals(priceRegularItemPage)) {
-                    System.out.println("Товар " + (i + 1) + ". Цены совпадают");
-                } else {
-                    System.out.println("Товар " + (i + 1) + ". Ошибка");
-                }
+                assertEquals(priceRegular,priceRegularItemPage);
+
                 driver.get("http://localhost/litecart/en/");
                 items = driver
                         .findElements(By.cssSelector("li.product div.price-wrapper"));
@@ -63,11 +59,9 @@ public class ProductParameters extends DriverClass {
                 String priceCampaignItemPage = driver
                         .findElements(By.cssSelector("div[id='box-product'] div.price-wrapper [class*='price']"))
                         .get(1).getAttribute("textContent");
-                if (priceRegular.equals(priceRegularItemPage) && priceCampaign.equals(priceCampaignItemPage)) {
-                    System.out.println("Товар " + (i + 1) + ". Цены совпадают");
-                } else {
-                    System.out.println("Товар " + (i + 1) + ". Ошибка");
-                }
+                assertEquals(priceRegular,priceRegularItemPage);
+                assertEquals(priceCampaign,priceCampaignItemPage);
+
                 driver.get("http://localhost/litecart/en/");
                 items = driver
                         .findElements(By.cssSelector("li.product div.price-wrapper"));
@@ -77,7 +71,6 @@ public class ProductParameters extends DriverClass {
     @Test
     // Тест проверяет, что обычная цена товара зачёркнутая и серая
     public void greyColorPrice() {
-        System.out.println("Тест проверяет, что обычная цена товара зачёркнутая и серая");
         driver.get("http://localhost/litecart/en/");
         List<WebElement> items = driver
                 .findElements(By.cssSelector("li.product div.price-wrapper"));
@@ -94,18 +87,16 @@ public class ProductParameters extends DriverClass {
                 int R = priceRegularColorRgba.getColor().getRed();
                 int G = priceRegularColorRgba.getColor().getGreen();
                 int B = priceRegularColorRgba.getColor().getBlue();
-                    if((R == G) & (G == B) & priceRegularCrossedOut.equals("line-through")){
-                    System.out.println("Товар " + (i + 1) + ". Обычная цена серая и зачеркнутая");
-                    } else {
-                    System.out.println("Товар " + (i + 1) + ". Ошибка");
-                    }
+
+                assertEquals(R,G);
+                assertEquals(G,B);
+                assertEquals("line-through",priceRegularCrossedOut);
             }
         }
     }
     @Test
     // Тест проверяет, что акционная цена товара жирная и красная. Для первого товара из блока Campaigns
     public void redColorPrice() {
-        System.out.println("Тест проверяет, что акционная цена товара жирная и красная");
         driver.get("http://localhost/litecart/en/");
         WebElement campaignPrice = driver
                 .findElement(By.cssSelector("div[id='box-campaigns'] strong"));
@@ -116,11 +107,10 @@ public class ProductParameters extends DriverClass {
         // вывести значения G, B
         int G = redPriceRgba.getColor().getGreen();
         int B = redPriceRgba.getColor().getBlue();
-                if((G == 0) & (B == 0) & boldP >= 700) {
-                System.out.println("Главная страница: Акционная цена товара жирная и красная");
-                } else {
-                System.out.println("Главная страница: Ошибка");
-                }
+        assertEquals(0,G);
+        assertEquals(0,B);
+        assertTrue(boldP >= 700);
+
         campaignPrice.click(); // переход на страницу товара
         WebElement campaignPriceItemPage = driver
                 .findElement(By.cssSelector("strong.campaign-price"));
@@ -130,16 +120,13 @@ public class ProductParameters extends DriverClass {
         // вывести значения G, B
         int G2 = redPriceItemPage.getColor().getGreen();
         int B2 = redPriceItemPage.getColor().getBlue();
-            if((G2 == 0) & (B2 == 0) & boldIP >= 700) {
-            System.out.println("Страница товара: Акционная цена товара жирная и красная");
-            } else {
-            System.out.println("Страница товара: Ошибка");
-            }
+        assertEquals(0,G2);
+        assertEquals(0,B2);
+        assertTrue(boldIP >= 700);
     }
     @Test
     // Тест проверяет, что шрифт акционной цены крупнее, чем обычной. Для первого товара из блока Campaigns
     public void sizePrice() {
-        System.out.println("Проверка размера шрифтов акционной цены и обычной");
         driver.get("http://localhost/litecart/en/");
         WebElement regularPrice = driver
                 .findElement(By.cssSelector("div[id='box-campaigns'] s"));
@@ -153,11 +140,8 @@ public class ProductParameters extends DriverClass {
                 .parseDouble(sizeRegularPrice.replace("px",""));
         double sizeCampaignPriceD = Double
                 .parseDouble(sizeCampaignPrice.replace("px",""));
-        if (sizeCampaignPriceD > sizeRegularPriceD){
-            System.out.println("Главная страница. Шрифт акционной цены крупнее, чем обычной");
-        }
-        else {System.out.println("Главная страница. Ошибка");
-        }
+
+        assertTrue(sizeCampaignPriceD > sizeRegularPriceD);
         //переход на страницу товара
         driver.findElement(By.cssSelector("div[id='box-campaigns'] li.product")).click();
         WebElement regularPriceItemPage = driver
@@ -172,11 +156,8 @@ public class ProductParameters extends DriverClass {
                 .parseDouble(sizeRegularPriceItemPage.replace("px",""));
         double sizeCampaignPriceItemPageD2 = Double
                 .parseDouble(sizeCampaignPriceItemPage.replace("px",""));
-        if (sizeCampaignPriceItemPageD2 > sizeRegularPriceItemPageD2){
-            System.out.println("Страница товара. Шрифт акционной цены крупнее, чем обычной");
-        }
-        else {System.out.println("Страница товара. Ошибка");
-        }
+
+        assertTrue(sizeCampaignPriceItemPageD2 > sizeRegularPriceItemPageD2);
     }
 }
 

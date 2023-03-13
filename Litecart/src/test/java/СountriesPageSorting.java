@@ -3,6 +3,8 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import java.util.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 public class СountriesPageSorting extends DriverClass {
     // Сценарий проверяет сортировку стран и геозон на странице стран
     @BeforeAll
@@ -25,14 +27,8 @@ public class СountriesPageSorting extends DriverClass {
         }
         List<String> countriesListSorted = new ArrayList<>(countriesList);
         countriesListSorted.sort(Comparator.naturalOrder());
-        boolean isEqual = Objects.equals(countriesList,countriesListSorted);
-        if (isEqual) {
-            System.out.println("Страны отсортированы в алфавитном порядке");
-        }
-        else {
-            System.out.println("Ошибка сортировки");
-        }
-        System.out.println(countriesList);
+
+        assertEquals(countriesListSorted,countriesList);
     }
     @Test
     public void geoZonesTest() {
@@ -56,14 +52,8 @@ public class СountriesPageSorting extends DriverClass {
                 namesList.remove(num2 - 1);
                 List<String> namesListSorted = new ArrayList<>(namesList);
                 namesListSorted.sort(Comparator.naturalOrder());
-                boolean isEqual = Objects.equals(namesList,namesListSorted);
-                if (isEqual) {
-                    System.out.println("Геозоны отсортированы в алфавитном порядке");
-                }
-                else {
-                    System.out.println("Ошибка сортировки");
-                }
-                System.out.println(namesList);
+
+                assertEquals(namesListSorted,namesList);
                 driver.get("http://localhost/litecart/admin/?app=countries&doc=countries");
             }
         }

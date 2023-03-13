@@ -2,6 +2,7 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import java.util.List;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 public class Stickers extends DriverClass {
     // Сценарий проверяет, что у каждого товара имеется ровно один стикер
     @Test
@@ -14,11 +15,7 @@ public class Stickers extends DriverClass {
             List<WebElement> stickers = items.get(i)
                     .findElements(By.cssSelector("div.sticker"));
             int stickersNum = stickers.size();
-            if (stickersNum == 1) {
-                System.out.println((i + 1) + " товар: один стикер");
-            } else {
-                System.out.println((i + 1) + " товар: ошибка");
-            }
+            assertEquals(1,stickersNum);
         }
     }
 }

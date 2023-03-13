@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.openqa.selenium.support.ui.ExpectedConditions.*;
 
 public class CartActions extends DriverClass {
@@ -69,8 +70,6 @@ public class CartActions extends DriverClass {
         }
         // проверить, что все товары в корзине удалены
         String noItems = driver.findElement(By.cssSelector("td.content p")).getAttribute("textContent");
-        if (noItems.equals("There are no items in your cart.")) {
-            System.out.println("Все товары в корзине удалены");
-        }
+        assertEquals("There are no items in your cart.",noItems);
     }
 }

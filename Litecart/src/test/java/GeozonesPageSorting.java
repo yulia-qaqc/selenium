@@ -5,7 +5,9 @@ import org.openqa.selenium.WebElement;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Objects;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class GeozonesPageSorting extends DriverClass {
     @BeforeAll
     public static void beforeTest() {
@@ -32,14 +34,8 @@ public class GeozonesPageSorting extends DriverClass {
             }
             List<String> zonesListSorted = new ArrayList<>(zonesList);
             zonesListSorted.sort(Comparator.naturalOrder());
-            boolean isEqual = Objects.equals(zonesList,zonesListSorted);
-            if (isEqual) {
-                System.out.println("Зоны отсортированы в алфавитном порядке");
-            }
-            else {
-                System.out.println("Ошибка сортировки");
-            }
-            System.out.println(zonesList);
+            assertEquals(zonesListSorted,zonesList);
+
             driver.get("http://localhost/litecart/admin/?app=geo_zones&doc=geo_zones");
             geoZones = driver
                     .findElements(By.cssSelector("tr.row td:nth-child(3) a"));
