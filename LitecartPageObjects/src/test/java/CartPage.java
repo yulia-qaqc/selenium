@@ -6,6 +6,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class CartPage {
     public static void deleteProducts(){
         List<WebElement> shortcuts =  DriverClass.driver.findElements(By.cssSelector("ul.shortcuts a"));
@@ -36,8 +38,6 @@ public class CartPage {
     }
     public static void checkProductsDeletion(){
         String noItems = DriverClass.driver.findElement(By.cssSelector("td.content p")).getAttribute("textContent");
-        if (noItems.equals("There are no items in your cart.")) {
-            System.out.println("Все товары в корзине удалены");
-        }
+        assertEquals("There are no items in your cart.",noItems);
     }
 }
